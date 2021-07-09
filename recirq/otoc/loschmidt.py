@@ -116,13 +116,35 @@ def recurse_pg(pg: Union[Program, ProgramGroup], counter, depth=0):
         counter[1] += estimate_runtime_seconds(pg)
 
 
+import time
+
+
+class Timer:
+    def __init__(self, name=''):
+        self.name = name
+
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, *args):
+        self.end = time.time()
+        self.interval = self.end - self.start
+        print(f'{self.name} took {self.interval}s')
+
+
 def main():
-    pg = get_all_diagonal_rect_executables(min_side_length=1, max_side_length=3)
-    cirq.to_json_gzip(pg, 'loschmidt-small-v1.json.gz')
-    counter = [0, 0]
-    recurse_pg(pg, counter=counter)
-    print('Number', counter[0])
-    print('Minutes', counter[1] / 60)
+    with Timer('Create executables'):
+        pg = get_all_diagonal_rect_executables(min_side_length=1, max_side_length=3)
+    # cirq.to_json(pg, 'loschmidt-small.json')
+    with Timer('Save gzip'):
+        cirq.to_json_gzip(pg, 'loschmidt-small-v1.json.gz')
+
+    with Timer('Iterate'):
+        counter = [0, 0]
+        recurse_pg(pg, counter=counter)
+        print('Number', counter[0])
+        print('Minutes', counter[1] / 60)
 
 
 if __name__ == '__main__':
