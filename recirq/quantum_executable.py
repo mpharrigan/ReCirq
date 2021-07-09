@@ -55,6 +55,19 @@ class Program:
         return hash(self.uuid)
 
 
+def _recurse_html_programgroup(pg: Union[Program, 'ProgramGroup'], depth=0):
+    if isinstance(pg, ProgramGroup):
+        s = ' ' * depth + f'<li>Group {pg.info}<ul>\n'
+
+        for child in pg.programs:
+            s += _recurse_html_programgroup(child, depth=depth + 1)
+        s += ' ' * depth + '</ul></li>\n'
+        return s
+
+    s = ' ' * depth + '<li>' + str(pg) + '</li>\n'
+    return s
+
+
 @cirq.json_serializable_dataclass(namespace='recirq', frozen=True)
 class ProgramGroup:
     info: Any
@@ -76,6 +89,40 @@ class ProgramGroup:
 
     def __hash__(self):
         return hash(self.uuid)
+
+    def _repr_html_(self):
+        return '<ul>\n' + _recurse_html_programgroup(self) + '</ul>\n'
+
+
+InfoTuple = Tuple[Tuple[str, Any], ...]
+
+
+def _recurse_flatten_programgroup(
+        pg: Union[Program, ProgramGroup],
+        flat_list: List[Tuple[Program, InfoTuple, Tuple[ProgramGroup, ...]]],
+        info: InfoTuple,
+        parents: Tuple[ProgramGroup, ...]
+):
+    new_info = dict(info)  # todo: dict-like access to info
+    pg_info = dict(pg.info)  # todo: dict-like access to info
+    for k in pg_info:
+        if k in new_info:
+            raise ValueError("Key already exists")
+        new_info[k] = pg_info[k]
+    new_info = tuple(new_info.items())
+
+    if isinstance(pg, ProgramGroup):
+        for child in pg.programs:
+            _recurse_flatten_programgroup(
+                child, flat_list=flat_list, info=new_info, parents=(pg,) + parents)
+    else:
+        flat_list.append((pg, new_info, parents))
+
+
+def flatten_program_group(pg: ProgramGroup):
+    flat_list = []
+    _recurse_flatten_programgroup(pg, flat_list, (), ())
+    return flat_list
 
 
 def get_sk_circuit(n):
