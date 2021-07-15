@@ -8,7 +8,7 @@ import cirq
 import cirq_google
 from cirq.experiments import random_rotations_between_grid_interaction_layers_circuit
 from recirq.named_topologies import DiagonalRectangleTopology
-from recirq.quantum_executable import ProgramGroup, Program, Bitstrings
+from recirq.quantum_executable import ProgramGroup, QuantumExecutable, Bitstrings
 
 
 def create_diagonal_rectangle_loschmidt_echo_circuit(
@@ -72,7 +72,7 @@ def get_all_diagonal_rect_executables(n_instances=10, n_repetitions=1_000, min_s
                     ProgramGroup(
                         info=(('macrocyle_depth', macrocycle_depth),),
                         programs=tuple(
-                            Program(
+                            QuantumExecutable(
                                 info=(('instance_i', instance_i),),
                                 problem_topology=topo,
                                 circuit=create_diagonal_rectangle_loschmidt_echo_circuit(
@@ -93,7 +93,7 @@ def get_all_diagonal_rect_executables(n_instances=10, n_repetitions=1_000, min_s
     )
 
 
-def estimate_runtime_seconds(program: Program):
+def estimate_runtime_seconds(program: QuantumExecutable):
     if not isinstance(program.measurement, Bitstrings):
         raise NotImplementedError()
 
@@ -104,7 +104,7 @@ def estimate_runtime_seconds(program: Program):
     return sampling_s + overhead_s
 
 
-def recurse_pg(pg: Union[Program, ProgramGroup], counter, depth=0):
+def recurse_pg(pg: Union[QuantumExecutable, ProgramGroup], counter, depth=0):
     if isinstance(pg, ProgramGroup):
         print('  ' * depth + str(pg.info))
         print('  ' * depth + f'Has {len(pg.programs)} children')
