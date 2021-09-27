@@ -73,7 +73,7 @@ class TiltedSquareLatticeLoschmidtSpec(ExecutableSpec):
         return dataclass_json_dict(self, namespace='recirq.algo_benchmarks')
 
 
-def get_all_tilted_square_lattice_executables_flat(
+def get_all_tilted_square_lattice_executables(
         n_instances=10, n_repetitions=1_000,
         min_side_length=2, max_side_length=8, side_length_step=2,
         seed=52, macrocycle_depths=None,

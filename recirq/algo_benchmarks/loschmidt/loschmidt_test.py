@@ -52,7 +52,7 @@ def test_get_all_tilted_square_lattice_executables(monkeypatch):
 
     monkeypatch.setattr(recirq.algo_benchmarks.loschmidt.loschmidt,
                         "create_tilted_square_lattice_loschmidt_echo_circuit", mock_get_circuit)
-    get_all_tilted_square_lattice_executables_flat()  # todo renamed flat -> ""
+    get_all_tilted_square_lattice_executables()
     n_instances = 10
     n_macrocycle_depths = 4  # 2,4,6,8
     n_side_lengths = 4  # width or height # of possibilities
