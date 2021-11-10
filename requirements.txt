@@ -10,22 +10,22 @@ ipython
 black
 
 # optimize
-scikit-learn
+# scikit-learn (moved to extra-requires)
 
 # qaoa
-networkx
-pytket-cirq~=0.16.0
+# networkx (transitive from cirq-core)
+# pytket-cirq~=0.16.0 (moved to extra-requires)
 
 # quantum chess, only needed for tests
-scipy
+# scipy (transitive from cirq-core, test requirements shouldn't be here)
 
 # hfvqe
-openfermion~=1.2.0
+# openfermion~=1.2.0 (moved to extra-requires)
 # fix bug with openfermionpyscf https://github.com/quantumlib/ReCirq/issues/200#issuecomment-923203883
-h5py~=3.2.1
+# h5py~=3.2.1 (moved to extra-requires)
 
 # fermi_hubbard
-tqdm  # notebook progress bars
+# tqdm  # notebook progress bars (transitive from cirq-core)
 
 # otoc
-Py-BOBYQA
+# Py-BOBYQA (moved to extra-requires)
