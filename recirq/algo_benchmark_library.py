@@ -5,22 +5,7 @@ from typing import Type, Callable, List, Tuple
 
 import pandas as pd
 
-from cirq_google import ExecutableSpec, QuantumExecutableGroup
-from recirq.fermi_hubbard.xx_model.single_noninteracting import (
-    SingleNoninteractingXxData,
-    SingleNoninteractingXxSpec,
-    get_all_single_noninteracting_xx_executables
-)
-from recirq.otoc.loschmidt.line_topology import (
-    LineTopologyLoschmidtSpec,
-    LineTopologyLoschmidtData,
-    get_all_line_topology_executables,
-)
-from recirq.otoc.loschmidt.tilted_square_lattice import (
-    TiltedSquareLatticeLoschmidtSpec,
-    TiltedSquareLatticeLoschmidtData,
-    get_all_tilted_square_lattice_executables
-)
+from cirq_google.workflow import ExecutableSpec, QuantumExecutableGroup
 
 
 @dataclass
@@ -75,54 +60,6 @@ class BenchmarkConfig:
 
 
 BENCHMARKS = [
-    AlgoBenchmark(
-        domain='recirq.otoc',
-        name='loschmidt.tilted_square_lattice',
-        executable_family='recirq.otoc.loschmidt.tilted_square_lattice',
-        spec_class=TiltedSquareLatticeLoschmidtSpec,
-        data_class=TiltedSquareLatticeLoschmidtData,
-        gen_func=get_all_tilted_square_lattice_executables,
-        configs=[
-            BenchmarkConfig(
-                short_name='small-v1',
-                full_name='tilted_square_lattice-small-v1.json.gz',
-                gen_script='gen-small-v1.py',
-                run_scripts=['run-simulator.py']
-            )
-        ]
-    ),
-    AlgoBenchmark(
-        domain='recirq.otoc',
-        name='loschmidt.line_topology',
-        executable_family='recirq.otoc.loschmidt.line_topology',
-        spec_class=LineTopologyLoschmidtSpec,
-        data_class=LineTopologyLoschmidtData,
-        gen_func=get_all_line_topology_executables,
-        configs=[
-            BenchmarkConfig(
-                short_name='small-v1',
-                full_name='line_topology-small-v1.json.gz',
-                gen_script='gen-small-v1.py',
-                run_scripts=['run-simulator.py']
-            )
-        ],
-    ),
-    AlgoBenchmark(
-        domain='recirq.fermi_hubbard',
-        name='xx_model.single_noninteracting',
-        executable_family='recirq.fermi_hubbard.xx_model.single_noninteracting',
-        spec_class=SingleNoninteractingXxSpec,
-        data_class=SingleNoninteractingXxData,
-        gen_func=get_all_single_noninteracting_xx_executables,
-        configs=[
-            BenchmarkConfig(
-                short_name='small-v1',
-                full_name='single_noninteracting-small-v1.json.gz',
-                gen_script='gen-small-v1.py',
-                run_scripts=['run-simulator.py']
-            )
-        ],
-    )
 ]
 
 
