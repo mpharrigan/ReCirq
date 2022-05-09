@@ -149,6 +149,29 @@ BENCHMARKS = [
             )
         ]
     ),
+    AlgorithmicBenchmark(
+        domain='recirq.qaoa',
+        name='sk_model',
+        executable_family='recirq.qaoa.sk_model',
+        description='\n'.join([
+            'An all-to-all QAOA benchmark',
+
+        ]),
+        spec_class=None,
+        executable_generator_func=None,
+        configs=[
+            BenchmarkConfig(
+                short_name='8q-v1',
+                full_name='sk_model.8q-v1',
+                description='\n'.join([
+                    'An 8q line',
+                    '',
+                ]),
+                gen_script='gen-8q-v1.py',
+                run_scripts=['run-simulator.py'],
+            )
+        ]
+    )
 ]
 
 
