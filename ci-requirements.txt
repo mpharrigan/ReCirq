@@ -4,7 +4,6 @@ cirq-google==1.0.0
 seaborn
 sphinx
 ipython
-black
 
 # otoc
 Py-BOBYQA
