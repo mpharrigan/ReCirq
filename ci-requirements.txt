@@ -1,0 +1,25 @@
+# Core requirements
+cirq-core==1.0.0
+cirq-google==1.0.0
+seaborn
+sphinx
+ipython
+black
+
+# otoc
+Py-BOBYQA
+
+# qaoa
+pytket-cirq>=0.16
+
+# optimize
+scikit-learn
+
+# hfvqe
+openfermion>=1.2.0
+
+# fermi_hubbard
+openfermion>=1.2.0
+
+# qml_lfe
+absl-py
