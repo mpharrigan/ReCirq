@@ -1,0 +1,10 @@
+[MASTER]
+max-line-length=100
+disable=
+    C,
+    R,
+    no-member,
+    protected-access,
+
+[TYPECHECK]
+generated-members=numpy.*
