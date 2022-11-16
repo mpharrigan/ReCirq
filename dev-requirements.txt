@@ -1,5 +1,5 @@
 pip-tools
-black
+black~=22.10.0
 pytest
 pylint~=2.15.5
 flake8~=5.0.4
