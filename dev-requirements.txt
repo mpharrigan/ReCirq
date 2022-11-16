@@ -1,5 +1,9 @@
 pip-tools
-black~=22.10.0
 pytest
+jupyter
+black~=22.10.0
 pylint~=2.15.5
 flake8~=5.0.4
+
+# pip-sync: don't uninstall self
+-e file:.
