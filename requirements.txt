@@ -5,3 +5,4 @@ cirq-google>=0.13.0
 seaborn
 sphinx
 ipython
+scikit-learn
