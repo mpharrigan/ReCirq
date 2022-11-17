@@ -91,9 +91,9 @@ def ham_two_local_term(op1, op2, ind1, ind2, N, dtype=np.complex128):
         raise ValueError('ham_two_local_term: invalid input indices')
 
     if op1.shape[0] == 1 or op1.shape[1] == 1:
-        def myeye(n): return np.ones(np.asarray(op1.shape) ** n, dtype=dtype)
+        myeye = lambda n: np.ones(np.asarray(op1.shape) ** n, dtype=dtype)
     else:
-        def myeye(n): return np.eye(np.asarray(op1.shape) ** n, dtype=dtype)
+        myeye = lambda n: np.eye(np.asarray(op1.shape) ** n, dtype=dtype)
 
     return np.kron(myeye(ind1),
                    np.kron(op1, np.kron(myeye(ind2 - ind1 - 1),
