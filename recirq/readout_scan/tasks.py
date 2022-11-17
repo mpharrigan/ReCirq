@@ -123,4 +123,3 @@ def run_readout_scan(task: ReadoutScanTask,
             recirq.BitArray(np.asarray(r.measurements['z']))
             for r in results]
     }, base_dir=base_dir)
-

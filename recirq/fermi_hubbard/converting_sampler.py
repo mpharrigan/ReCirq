@@ -80,7 +80,7 @@ class ConvertingSampler(cirq.Sampler):
         return self._sampler.run_sweep(program, params, repetitions)
 
     async def run_async(self, program: cirq.Circuit, *,
-                       repetitions: int) -> cirq.Result:
+                        repetitions: int) -> cirq.Result:
         program = self._convert(program)
         return await self._sampler.run_async(program,
                                              repetitions=repetitions)

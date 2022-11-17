@@ -293,17 +293,18 @@ def interleave_ro_tasks(tasks: List[P1LandscapeDataCollectionTask],
     return new_tasks
 
 
-def get_data_collection_tasks_on_a_grid(*,
-                                        dataset_id: str,
-                                        pgen_task: ProblemGenerationTaskT,
-                                        device_name: str,
-                                        n_shots: int = 50_000,
-                                        n_ro_shots: int = 1_000_000,
-                                        gamma_res: int = 31,
-                                        beta_res: int = 31,
-                                        epoch: Optional[str] = None,
-                                        ro_freq: int = 50) -> List[
-    Union[P1LandscapeDataCollectionTask, ReadoutCalibrationTask]]:
+def get_data_collection_tasks_on_a_grid(
+        *,
+        dataset_id: str,
+        pgen_task: ProblemGenerationTaskT,
+        device_name: str,
+        n_shots: int = 50_000,
+        n_ro_shots: int = 1_000_000,
+        gamma_res: int = 31,
+        beta_res: int = 31,
+        epoch: Optional[str] = None,
+        ro_freq: int = 50
+) -> List[Union[P1LandscapeDataCollectionTask, ReadoutCalibrationTask]]:
     """Return a list of P1LandscapeDataCollectionTasks on a grid of (gamma,beta) points.
 
     This also interleaves ReadoutCalibration tasks.

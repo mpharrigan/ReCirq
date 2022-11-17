@@ -51,7 +51,7 @@ def _get_quadratic_model(
     """
     linear_model = LinearRegression(fit_intercept=False)
     model = Pipeline(
-        [("poly", PolynomialFeatures(degree=2)), ("linear_model", linear_model),]
+        [("poly", PolynomialFeatures(degree=2)), ("linear_model", linear_model)]
     )
     shifted_xs = [(x - xopt) for x in xs]
     model = model.fit(shifted_xs, ys)
@@ -61,7 +61,7 @@ def _get_quadratic_model(
 @dataclass(frozen=True)
 class _ExponentialSchedule:
     """The Exponential schedule for some hyperparameter (e.g. learning_rate)
-    
+
     Exponential decay for the `learning rate`. For each `decay_steps`, the learning 
     rate is scheduled to decay at the `decay_rate`. The `staircase` controls whether 
     to decay smoothly or discontinuously. After this many timesteps pass, the final
@@ -74,7 +74,7 @@ class _ExponentialSchedule:
         staircase: if True, the learning rate keeps the same before every decay steps; 
                     otherwise, the learning rate decays smoothly according 
                     to exponential interpolation.
-    
+
     Returns: 
         a class of the schedule
     """

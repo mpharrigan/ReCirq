@@ -124,8 +124,8 @@ def compute_opdm(
 
             if return_variance:
                 variance_dict['z'][circuit_idx] = \
-                results_dict['z'][circuit_idx][qubits].cov().to_numpy() / \
-                len(data)
+                    results_dict['z'][circuit_idx][qubits].cov().to_numpy() / \
+                    len(data)
 
     if return_variance:
         return opdm, variance_dict

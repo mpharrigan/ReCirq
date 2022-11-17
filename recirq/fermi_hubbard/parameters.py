@@ -476,7 +476,7 @@ class GaussianTrappingPotential(TrappingPotential):
     def get_potential(self, sites_count: int) -> np.ndarray:
         def gaussian(x: int) -> float:
             return self.scale * np.exp(-0.5 * ((x - self.center) /
-                                                    self.sigma) ** 2)
+                                               self.sigma) ** 2)
         return np.array([gaussian(x) for x in np.linspace(0, 1, sites_count)])
 
     def _json_dict_(self):

@@ -99,7 +99,7 @@ def get_dvec_hmat(rotation_generators: List[FermionOperator],
                   rhf_objective: RestrictedHartreeFockObjective,
                   rdms: InteractionRDM,
                   diagonal_hessian=False
-                 ) -> (np.ndarray, np.ndarray):  # testpragma: no cover
+                  ) -> (np.ndarray, np.ndarray):  # testpragma: no cover
     # coverage: ignore
     """Generate first and second terms of the BCH expansion.
 
@@ -119,7 +119,7 @@ def get_dvec_hmat(rotation_generators: List[FermionOperator],
     kdelta_mat = np.eye(rhf_objective.hamiltonian.one_body_tensor.shape[0])
 
     def single_commutator_einsum(idx: int, rot_gen: FermionOperator
-                                ) -> Tuple[int, float]:  # testpragma: no cover
+                                 ) -> Tuple[int, float]:  # testpragma: no cover
         # coverage: ignore
         """Evaluate <psi|[H, p^q - q^p]|psi>.
 

@@ -116,7 +116,7 @@ class OpdmFunctional():  # testpragma: no cover
                     # PostSelect the data
                     good_indices = \
                         np.where(np.sum(np.array(data.data), axis=1) ==
-                                            self.num_electrons)[0]
+                                 self.num_electrons)[0]
                     good_data = data.data[data.data.index.isin(good_indices)]
                     data_dict[measure_type][circuit_index] = good_data
                 else:  # testpragma: no cover

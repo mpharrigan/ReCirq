@@ -110,4 +110,3 @@ def test_grid_parallel_xeb_metadata_repr():
     )
     cirq.testing.assert_equivalent_repr(metadata,
                                         setup_code="import recirq.benchmarks.xeb\nimport cirq")
-

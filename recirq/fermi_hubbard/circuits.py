@@ -293,7 +293,7 @@ def align_givens_circuit(circuit: cirq.Circuit) -> cirq.Circuit:
 
     # Operations which are followed by a list of Z operations.
     following_zs: Dict[Optional[cirq.Operation],
-                      List[cirq.Operation]] = defaultdict(lambda: [])
+                       List[cirq.Operation]] = defaultdict(lambda: [])
 
     # Make a copy of a circuit without Z operations.
     frontier: Dict[cirq.Qid, cirq.Operation] = {}

@@ -874,7 +874,7 @@ def _create_default_axes(rows: int,
             row_axes.append(plt.axes([offset_left / total_width,
                                       offset_bottom / total_height,
                                       axis_width / total_width,
-                                      axis_height/ total_height]))
+                                      axis_height / total_height]))
             offset_left += axis_width + space_horizontal
         axes.append(row_axes)
         offset_bottom += axis_height + space_vertical
