@@ -26,7 +26,7 @@ import cirq
 import recirq
 
 
-@recirq.json_serializable_dataclass(namespace='recirq.readout_scan', 
+@recirq.json_serializable_dataclass(namespace='recirq.readout_scan',
                                     registry=recirq.Registry,
                                     frozen=True)
 class ReadoutScanTask:
@@ -64,7 +64,7 @@ class ReadoutScanTask:
 
 # Define the following helper functions to make nicer `fn` keys
 # for the tasks:
-    
+
 def _abbrev_n_shots(n_shots: int) -> str:
     """Shorter n_shots component of a filename"""
     if n_shots % 1000 == 0:
@@ -86,7 +86,7 @@ def run_readout_scan(task: ReadoutScanTask,
     """Execute a :py:class:`ReadoutScanTask` task."""
     if base_dir is None:
         base_dir = DEFAULT_BASE_DIR
-    
+
     if recirq.exists(task, base_dir=base_dir):
         print(f"{task} already exists. Skipping.")
         return
