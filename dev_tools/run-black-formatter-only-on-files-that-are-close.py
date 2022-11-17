@@ -130,5 +130,5 @@ def do_close():
 
 
 if __name__ == '__main__':
-    # get_close_black()
+    get_close_black()
     do_close()
