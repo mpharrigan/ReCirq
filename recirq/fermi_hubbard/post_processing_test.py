@@ -318,7 +318,6 @@ def test_charge_spin_density() -> None:
     std_dev_12 = np.sqrt(12 ** 2 + 12 ** 2)
     std_dev_13 = np.sqrt(13 ** 2 + 13 ** 2)
 
-
     np.testing.assert_allclose(
         charge_spin.std_dev,
         [  # Chains

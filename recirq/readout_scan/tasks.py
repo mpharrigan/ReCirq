@@ -26,7 +26,6 @@ import cirq
 import recirq
 
 
-
 @recirq.json_serializable_dataclass(namespace='recirq.readout_scan', 
                                     registry=recirq.Registry,
                                     frozen=True)
@@ -72,15 +71,14 @@ def _abbrev_n_shots(n_shots: int) -> str:
         return f'{n_shots // 1000}k'
     return str(n_shots)
 
+
 def _abbrev_grid_qubit(qubit: cirq.GridQubit) -> str:
     """Formatted grid_qubit component of a filename"""
     return f'{qubit.row}_{qubit.col}'
 
 
-
 EXPERIMENT_NAME = 'readout-scan'
 DEFAULT_BASE_DIR = os.path.expanduser(f'~/cirq-results/{EXPERIMENT_NAME}')
-
 
 
 def run_readout_scan(task: ReadoutScanTask,

@@ -213,6 +213,7 @@ class Hamiltonian:
     def _json_dict_(self):
         return cirq.dataclass_json_dict(self)
 
+
 class SingleParticle:
     """Base class for initial states that define single particle on a chain."""
 

@@ -685,6 +685,7 @@ def _spin_echo_gates(idx: int) -> cirq.ops:
     ]
     return pi_pulses[idx - 1]
 
+
 def _default_interaction_sequence(
     qubits: Sequence[cirq.GridQubit],
 ) -> List[Set[Tuple[cirq.GridQubit, cirq.GridQubit]]]:

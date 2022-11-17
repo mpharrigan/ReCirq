@@ -102,6 +102,7 @@ def _grid_parallel_xeb_resolver(cirq_type: str) -> Type:
     if cirq_type == 'recirq.GridParallelXEBMetadata':
         return GridParallelXEBMetadata
 
+
 def load(params: Any, base_dir: str) -> Any:
     """Load an object from a JSON file.
 
