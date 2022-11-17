@@ -4,15 +4,13 @@ cirq-google==1.0.0
 seaborn
 sphinx
 ipython
+scikit-learn
 
 # otoc
 Py-BOBYQA
 
 # qaoa
 pytket-cirq>=0.16
-
-# optimize
-scikit-learn
 
 # hfvqe
 openfermion>=1.2.0
