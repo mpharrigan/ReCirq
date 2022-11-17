@@ -1,6 +1,7 @@
 pip-tools
 pytest
 jupyter
+autopep8~=2.0.0
 black~=22.10.0
 pylint~=2.15.5
 flake8~=5.0.4
