@@ -1,6 +1,5 @@
-from subprocess import run
-
 from pathlib import Path
+from subprocess import run
 
 SRC_DIR = Path(__file__).parent / '..'
 
@@ -104,7 +103,7 @@ NO = {'recirq/algorithmic_benchmark_library.py': 204,
       'recirq/serialization_utils_test.py': 55}
 
 
-def get_close(add_only: bool = True):
+def get_close_black(add_only: bool = True):
     o = run(['git', 'ls-files'], capture_output=True, universal_newlines=True, cwd=SRC_DIR)
 
     fns = [line for line in o.stdout.splitlines() if
@@ -131,5 +130,5 @@ def do_close():
 
 
 if __name__ == '__main__':
-    # get_close()
+    # get_close_black()
     do_close()
