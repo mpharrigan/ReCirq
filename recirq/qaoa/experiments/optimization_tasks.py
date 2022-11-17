@@ -218,7 +218,7 @@ def collect_optimization_data(
 
 def _get_circuit(problem: ProblemT, gammas: Sequence[float],
                  betas: Sequence[float], device_name: str
-                ) -> Tuple[List[cirq.Qid], cirq.Circuit, List[cirq.Qid]]:
+                 ) -> Tuple[List[cirq.Qid], cirq.Circuit, List[cirq.Qid]]:
     if isinstance(problem, HardwareGridProblem):
         initial_qubits = [cirq.GridQubit(r, c) for r, c in problem.coordinates]
         circuit, final_qubits = get_compiled_hardware_grid_circuit(

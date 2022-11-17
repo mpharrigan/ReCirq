@@ -17,6 +17,7 @@ from recirq.qaoa.problem_circuits import get_generic_qaoa_circuit
 if RouteCQC is NotImplemented:
     from recirq.qaoa.placement import pytket
 
+
 def permute_gate(qubits: Sequence[cirq.Qid], permutation: List[int]):
     return cca.LinearPermutationGate(
         num_qubits=len(qubits),
@@ -27,7 +28,7 @@ def permute_gate(qubits: Sequence[cirq.Qid], permutation: List[int]):
 @pytest.mark.skipif(
     RouteCQC is NotImplemented and pytket is NotImplemented,
     reason='Pytket and RouteCQC are both not installed.'
-    )
+)
 def test_place_on_device():
     problem_graph = nx.random_regular_graph(d=3, n=10)
     nx.set_edge_attributes(problem_graph, values=1, name='weight')

@@ -26,6 +26,7 @@ except ImportError:
         from pytket.circuit import Node, Qubit
         from pytket.passes import SequencePass, RoutingPass, PlacementPass
         from pytket.predicates import CompilationUnit, ConnectivityPredicate
+
         try:
             from pytket.placement import GraphPlacement
         except ImportError:
@@ -41,7 +42,7 @@ except ImportError:
         else:
             raise ImportError(
                 "Routing utilities don't exist in this version of Cirq and pytket is not installed."
-                )
+            )
 
 import recirq
 
@@ -136,12 +137,11 @@ def place_on_device(circuit: cirq.Circuit,
         routed_circuit = pytket.extensions.cirq.tk_to_cirq(unit.circuit)
 
         return routed_circuit, initial_map, final_map
-    
+
     # Else use Cirq for routing
     router = cirq.RouteCQC(device.metadata.nx_graph)
     routed_circuit, initial_map, swap_map = router.route_circuit(circuit)
     return routed_circuit, initial_map, {lq: swap_map[initial_map[lq]] for lq in initial_map}
-
 
 
 def path_weight(graph: nx.Graph, path,

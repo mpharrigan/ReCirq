@@ -667,7 +667,7 @@ def measure_with_final_permutation(
 
 def compile_out_virtual_z(
         circuit: cirq.Circuit,
-        ) -> cirq.Circuit:
+) -> cirq.Circuit:
     """Eject Z gates from the circuit.
 
     This is a wrapper around cirq.EjectZ()
@@ -685,7 +685,7 @@ def compile_to_non_negligible(
         circuit: cirq.Circuit,
         *,
         tolerance=1e-5,
-        ) -> cirq.Circuit:
+) -> cirq.Circuit:
     """Remove negligible gates from the circuit.
 
     This is a wrapper around cirq.DropNegligible(tolerance)

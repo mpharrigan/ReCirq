@@ -132,7 +132,7 @@ def validate_well_structured(circuit: cirq.Circuit,
         raise BadlyStructuredCircuitError(
             "Badly structured circuit. "
             "Inhomogeneous or non-device moments at indices {}"
-                .format(violation_indices))
+            .format(violation_indices))
 
     # Check that there's only one layer of PhX or Z between entangling layers
     # Check that permutations and measurements must come at the end (in that order)
